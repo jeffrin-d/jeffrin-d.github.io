@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Final</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,12 +14259,15 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
+<p><h1><center>An Analysis of World Happiness<center><h1></p>
+<p><p>
+In early 2020, word of a global pandemic was steadily reaching the United States and by March of 2020, there were impending lockdowns and overall much higher levels of tension throughout the globe. Apart from the United States, countries everywhere were affected by the pandemic, more so third world countries with dense populations and inadequate access to proper healthcare.</p>
+<p>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14279,7 +14282,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;world-happiness-report-2015-2022-cleaned.csv&quot;</span><span class="p">)</span>
@@ -14299,13 +14302,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-  <div id="df-2a69dc6f-56fa-4e76-b942-2717c8eab1ae">
+  <div id="df-47a79949-b762-4679-ad99-6655f7068881">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -14509,7 +14512,7 @@ a.anchor-link {
 </table>
 <p>1229 rows × 12 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-2a69dc6f-56fa-4e76-b942-2717c8eab1ae')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-47a79949-b762-4679-ad99-6655f7068881')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -14560,12 +14563,12 @@ a.anchor-link {
 
       <script>
         const buttonEl =
-          document.querySelector('#df-2a69dc6f-56fa-4e76-b942-2717c8eab1ae button.colab-df-convert');
+          document.querySelector('#df-47a79949-b762-4679-ad99-6655f7068881 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-2a69dc6f-56fa-4e76-b942-2717c8eab1ae');
+          const element = document.querySelector('#df-47a79949-b762-4679-ad99-6655f7068881');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -14597,7 +14600,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><h4>Null Hypothesis<h4>
-A country's happiness rank is has no</p>
+A country's happiness score (and thus, their rank) is unrelated to parameters including GDP per Capita, Social Support, Life Expectancy, and Government Corruption.</p>
 
 </div>
 </div>
