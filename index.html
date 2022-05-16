@@ -15951,92 +15951,20 @@ Name: Religion, Length: 22094, dtype: object&gt;</pre>
 <p>We now want to do some analysis on this data. I was unable to get some features for calculating religion to work, so this was my alternative.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[131]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[132]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-python"><pre><span></span><span class="c1">#plt.figure(figsize=(15,10))</span>
-<span class="c1">#plt.scatter(df[&#39;Total&#39;], happiness_df[&#39;Happiness Score&#39;])</span>
-<span class="c1">#plt.show()</span>
+<div class=" highlight hl-python"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">],</span> <span class="n">happiness_df</span><span class="p">[</span><span class="s1">&#39;Happiness Score&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-131-934e05d06189&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">15</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>scatter<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Total&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> happiness_df<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Happiness Score&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> plt<span class="ansi-blue-fg">.</span>show<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">scatter</span><span class="ansi-blue-fg">(x, y, s, c, marker, cmap, norm, vmin, vmax, alpha, linewidths, verts, edgecolors, plotnonfinite, data, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2814</span>         verts<span class="ansi-blue-fg">=</span>verts<span class="ansi-blue-fg">,</span> edgecolors<span class="ansi-blue-fg">=</span>edgecolors<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2815</span>         plotnonfinite=plotnonfinite, **({&#34;data&#34;: data} if data is not
-<span class="ansi-green-fg">-&gt; 2816</span><span class="ansi-red-fg">         None else {}), **kwargs)
-</span><span class="ansi-green-intense-fg ansi-bold">   2817</span>     sci<span class="ansi-blue-fg">(</span>__ret<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2818</span>     <span class="ansi-green-fg">return</span> __ret
-
-<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1563</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1564</span>         <span class="ansi-green-fg">if</span> data <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1565</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>map<span class="ansi-blue-fg">(</span>sanitize_sequence<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1566</span> 
-<span class="ansi-green-intense-fg ansi-bold">   1567</span>         bound <span class="ansi-blue-fg">=</span> new_sig<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/cbook/deprecation.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    356</span>                 <span class="ansi-blue-fg">f&#34;%(removal)s.  If any parameter follows {name!r}, they &#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    357</span>                 f&#34;should be pass as keyword, not positionally.&#34;)
-<span class="ansi-green-fg">--&gt; 358</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    359</span> 
-<span class="ansi-green-intense-fg ansi-bold">    360</span>     <span class="ansi-green-fg">return</span> wrapper
-
-<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/axes/_axes.py</span> in <span class="ansi-cyan-fg">scatter</span><span class="ansi-blue-fg">(self, x, y, s, c, marker, cmap, norm, vmin, vmax, alpha, linewidths, verts, edgecolors, plotnonfinite, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   4389</span>         y <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>ma<span class="ansi-blue-fg">.</span>ravel<span class="ansi-blue-fg">(</span>y<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   4390</span>         <span class="ansi-green-fg">if</span> x<span class="ansi-blue-fg">.</span>size <span class="ansi-blue-fg">!=</span> y<span class="ansi-blue-fg">.</span>size<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 4391</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;x and y must be the same size&#34;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   4392</span> 
-<span class="ansi-green-intense-fg ansi-bold">   4393</span>         <span class="ansi-green-fg">if</span> s <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-red-fg">ValueError</span>: x and y must be the same size</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
