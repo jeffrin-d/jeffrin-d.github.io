@@ -14259,7 +14259,7 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1><center>Analysis of Religion's Impact on Countries</center></h1>
+<h1><center><bold>Analysis of Religion's Impact on Countries</bold></center></h1>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14270,7 +14270,8 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5>Table of Contents:</h5>
+<p><strong>Table of Contents:</strong></p>
+
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14287,18 +14288,18 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4>1. Introduction</h4>
+<h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h1>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The objective of this tutorial is to examine the impact of religion on various parameters of a country, including GDP per capita, Healthy Life Expectancy, Social Support, Freedom to make life choices, Generosity, and Corruption Perception. These variables were actually used to calculate a "Happiness Score" for this dataset, however, this tutorial will primarily look at how impactful religion can be one these variables, some of which are perhaps seemingly unrelated (like GDP per capita and Healthy Life Expectancy). Nevertheless, this analysis will hopefully show some interesting and maybe unexpected trends between religion and the variables above.</p>
+<p>The objective of this tutorial is to examine the impact of religion on various parameters of a country, including GDP per capita, Healthy Life Expectancy, Social Support, Freedom to make life choices, Generosity, and Corruption Perception. These variables were actually used to calculate a "Happiness Score" for this dataset, however, this tutorial will primarily look at how impactful religion, specifically higher proportions of religious individuals in a country, can be one, or more, of these variables, some of which are perhaps seemingly unrelated (like GDP per capita and Healthy Life Expectancy). Nevertheless, this analysis will hopefully show some interesting and maybe unexpected trends between religion and the variables above.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4>2. Data Management/Munging</h4>
+<h1 id="2.-Data-Management/Munging">2. Data Management/Munging<a class="anchor-link" href="#2.-Data-Management/Munging">&#182;</a></h1>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14311,16 +14312,23 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Here we are using the following tools...</p>
+<ol>
+<li>pandas</li>
+<li>numpy</li>
+<li>matplotlib</li>
+</ol>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[130]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas._libs.tslibs</span> <span class="kn">import</span> <span class="n">dtypes</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 
      </div>
@@ -14328,10 +14336,15 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Happiness-Data">Happiness Data<a class="anchor-link" href="#Happiness-Data">&#182;</a></h2>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df_2015</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/2015.csv&quot;</span><span class="p">)</span>
@@ -14352,24 +14365,1702 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4>3. Exploratory Data Analysis</h4>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4>4. Hypothesis Testing</h4>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Null Hypothesis:
-Religion has no affect on parameters such as GDP per capita, Healthy Life Expectancy, Social Support, Freedom to make life choices, Generosity, and Corruption Perception.</p>
+<p>We have data from the years 2015-2022, with the most recent update of 2022 data being in March. Down the stretch of this tutorial, it will likely be a lot easier to examine all the data within one Pandas Dataframe, so I will do some cleaning to make these dataframes more uniform, and then add a column which indicates the year for each row of data (so identifying the year on the single Dataframe is easier).</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4>5. Insights and Conclusion</h4>
+<p>However, before blindly concatenating these DataFrames, we must ensure that the columns are the same throughout the yearly DataFrames. We can check this by doing the following...</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of 2015 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2015</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2016 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2016</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2017 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2017</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2018 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2018</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2019 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2019</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2020 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2020</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2021 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2021</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2022 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2022</span><span class="p">)))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Columns of 2015 DataFrame:
+[&#39;Country&#39;, &#39;Region&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;Standard Error&#39;, &#39;Economy (GDP per Capita)&#39;, &#39;Family&#39;, &#39;Health (Life Expectancy)&#39;, &#39;Freedom&#39;, &#39;Trust (Government Corruption)&#39;, &#39;Generosity&#39;, &#39;Dystopia Residual&#39;]
+
+Columns of 2016 DataFrame:
+[&#39;Country&#39;, &#39;Region&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;Lower Confidence Interval&#39;, &#39;Upper Confidence Interval&#39;, &#39;Economy (GDP per Capita)&#39;, &#39;Family&#39;, &#39;Health (Life Expectancy)&#39;, &#39;Freedom&#39;, &#39;Trust (Government Corruption)&#39;, &#39;Generosity&#39;, &#39;Dystopia Residual&#39;]
+
+Columns of 2017 DataFrame:
+[&#39;Country&#39;, &#39;Happiness.Rank&#39;, &#39;Happiness.Score&#39;, &#39;Whisker.high&#39;, &#39;Whisker.low&#39;, &#39;Economy..GDP.per.Capita.&#39;, &#39;Family&#39;, &#39;Health..Life.Expectancy.&#39;, &#39;Freedom&#39;, &#39;Generosity&#39;, &#39;Trust..Government.Corruption.&#39;, &#39;Dystopia.Residual&#39;]
+
+Columns of 2018 DataFrame:
+[&#39;Overall rank&#39;, &#39;Country or region&#39;, &#39;Score&#39;, &#39;GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;]
+
+Columns of 2019 DataFrame:
+[&#39;Overall rank&#39;, &#39;Country or region&#39;, &#39;Score&#39;, &#39;GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;]
+
+Columns of 2020 DataFrame:
+[&#39;Country name&#39;, &#39;Regional indicator&#39;, &#39;Ladder score&#39;, &#39;Standard error of ladder score&#39;, &#39;upperwhisker&#39;, &#39;lowerwhisker&#39;, &#39;Logged GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;, &#39;Ladder score in Dystopia&#39;, &#39;Explained by: Log GDP per capita&#39;, &#39;Explained by: Social support&#39;, &#39;Explained by: Healthy life expectancy&#39;, &#39;Explained by: Freedom to make life choices&#39;, &#39;Explained by: Generosity&#39;, &#39;Explained by: Perceptions of corruption&#39;, &#39;Dystopia + residual&#39;]
+
+Columns of 2021 DataFrame:
+[&#39;Country name&#39;, &#39;Regional indicator&#39;, &#39;Ladder score&#39;, &#39;Standard error of ladder score&#39;, &#39;upperwhisker&#39;, &#39;lowerwhisker&#39;, &#39;Logged GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;, &#39;Ladder score in Dystopia&#39;, &#39;Explained by: Log GDP per capita&#39;, &#39;Explained by: Social support&#39;, &#39;Explained by: Healthy life expectancy&#39;, &#39;Explained by: Freedom to make life choices&#39;, &#39;Explained by: Generosity&#39;, &#39;Explained by: Perceptions of corruption&#39;, &#39;Dystopia + residual&#39;]
+
+Columns of 2022 DataFrame:
+[&#39;RANK&#39;, &#39;Country&#39;, &#39;Happiness score&#39;, &#39;Whisker-high&#39;, &#39;Whisker-low&#39;, &#39;Dystopia (1.83) + residual&#39;, &#39;Explained by: GDP per capita&#39;, &#39;Explained by: Social support&#39;, &#39;Explained by: Healthy life expectancy&#39;, &#39;Explained by: Freedom to make life choices&#39;, &#39;Explained by: Generosity&#39;, &#39;Explained by: Perceptions of corruption&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Although this is a crude and somewhat inefficient method of checking column names, it still works. We can easily see that there are plenty of inconsistensies, as in there are some DataFrames with additional columns (like confidence intervals for Happiness Score) that other DataFrames do not contain. Additionally, the DataFrames for 2020 and 2021 both do not include a Happiness Rank, only a score (again with the name being "Ladder score" rather than "Happiness score"). Thus, let us first delete columns that might not provide relevant information.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[70]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="c1"># These are the columns which we want for the large dataset</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness Score&#39;</span><span class="p">,</span> <span class="s1">&#39;GDP per Capita (Economy)&#39;</span><span class="p">,</span> <span class="s1">&#39;Social Support&#39;</span><span class="p">,</span> <span class="s1">&#39;Healthy Life Expectancy&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Freedom to make life choices&#39;</span><span class="p">,</span> <span class="s1">&#39;Perceptions of Corruption&#39;</span><span class="p">,</span> <span class="s1">&#39;Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]</span>
+
+<span class="c1"># First let&#39;s add a column for Year</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_2015</span><span class="p">,</span> <span class="n">df_2016</span><span class="p">,</span> <span class="n">df_2017</span><span class="p">,</span> <span class="n">df_2018</span><span class="p">,</span> <span class="n">df_2019</span><span class="p">,</span> <span class="n">df_2020</span><span class="p">,</span> <span class="n">df_2021</span><span class="p">,</span> <span class="n">df_2022</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+  <span class="n">dfs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">years</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># 2015 </span>
+<span class="n">df_2015</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Error&#39;</span><span class="p">,</span> <span class="s1">&#39;Dystopia Residual&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2016</span>
+<span class="n">df_2016</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Lower Confidence Interval&#39;</span><span class="p">,</span> <span class="s1">&#39;Upper Confidence Interval&#39;</span><span class="p">,</span> <span class="s1">&#39;Dystopia Residual&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2017</span>
+<span class="n">df_2017</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Whisker.high&#39;</span><span class="p">,</span> <span class="s1">&#39;Whisker.low&#39;</span><span class="p">,</span> <span class="s1">&#39;Dystopia.Residual&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2020</span>
+<span class="n">df_2020</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Regional indicator&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard error of ladder score&#39;</span><span class="p">,</span> <span class="s1">&#39;upperwhisker&#39;</span><span class="p">,</span> <span class="s1">&#39;lowerwhisker&#39;</span><span class="p">,</span> <span class="s1">&#39;Ladder score in Dystopia&#39;</span><span class="p">,</span> <span class="s1">&#39;Dystopia + residual&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_2020</span> <span class="o">=</span> <span class="n">df_2020</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_2020</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;Explained by&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 2021</span>
+<span class="n">df_2021</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Regional indicator&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard error of ladder score&#39;</span><span class="p">,</span> <span class="s1">&#39;upperwhisker&#39;</span><span class="p">,</span> <span class="s1">&#39;lowerwhisker&#39;</span><span class="p">,</span> <span class="s1">&#39;Ladder score in Dystopia&#39;</span><span class="p">,</span> <span class="s1">&#39;Dystopia + residual&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_2021</span> <span class="o">=</span> <span class="n">df_2021</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_2021</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;Explained by&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 2022</span>
+<span class="n">df_2022</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Whisker-high&#39;</span><span class="p">,</span> <span class="s1">&#39;Whisker-low&#39;</span><span class="p">,</span> <span class="s1">&#39;Dystopia (1.83) + residual&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The procedure that I took here was first defining what my desired columns of the final DataFrame would be and storing it in a list. Then I added a column for years, so that when we have our final DataFrame, we can still reference which year this row of data is referring to. Finally, I dropped the columns that I did not plan on using from each of the current DataFrames. As we can see, 2018 and 2019 do not need additional columns removed, just for the columns to be reordered and finally renamed.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[71]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of 2015 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2015</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2016 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2016</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2017 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2017</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2018 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2018</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2019 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2019</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2020 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2020</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2021 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2021</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2022 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2022</span><span class="p">)))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Columns of 2015 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;Economy (GDP per Capita)&#39;, &#39;Family&#39;, &#39;Health (Life Expectancy)&#39;, &#39;Freedom&#39;, &#39;Trust (Government Corruption)&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2016 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;Economy (GDP per Capita)&#39;, &#39;Family&#39;, &#39;Health (Life Expectancy)&#39;, &#39;Freedom&#39;, &#39;Trust (Government Corruption)&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2017 DataFrame:
+[&#39;Country&#39;, &#39;Happiness.Rank&#39;, &#39;Happiness.Score&#39;, &#39;Economy..GDP.per.Capita.&#39;, &#39;Family&#39;, &#39;Health..Life.Expectancy.&#39;, &#39;Freedom&#39;, &#39;Generosity&#39;, &#39;Trust..Government.Corruption.&#39;, &#39;Year&#39;]
+
+Columns of 2018 DataFrame:
+[&#39;Overall rank&#39;, &#39;Country or region&#39;, &#39;Score&#39;, &#39;GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;, &#39;Year&#39;]
+
+Columns of 2019 DataFrame:
+[&#39;Overall rank&#39;, &#39;Country or region&#39;, &#39;Score&#39;, &#39;GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;, &#39;Year&#39;]
+
+Columns of 2020 DataFrame:
+[&#39;Country name&#39;, &#39;Ladder score&#39;, &#39;Logged GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;, &#39;Year&#39;]
+
+Columns of 2021 DataFrame:
+[&#39;Country name&#39;, &#39;Ladder score&#39;, &#39;Logged GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Generosity&#39;, &#39;Perceptions of corruption&#39;, &#39;Year&#39;]
+
+Columns of 2022 DataFrame:
+[&#39;RANK&#39;, &#39;Country&#39;, &#39;Happiness score&#39;, &#39;Explained by: GDP per capita&#39;, &#39;Explained by: Social support&#39;, &#39;Explained by: Healthy life expectancy&#39;, &#39;Explained by: Freedom to make life choices&#39;, &#39;Explained by: Generosity&#39;, &#39;Explained by: Perceptions of corruption&#39;, &#39;Year&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>That looks a lot better, right? We still have a couple things to fix, however, like the order of the columns and the fact that certain DataFrames are missing a Happiness Rank, although they do have an associated Happiness score.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="c1"># 2020 and 2021 are missing a column for Happiness rank, so let us fix that</span>
+<span class="n">df_2020</span><span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_2020</span><span class="p">[</span><span class="s1">&#39;Ladder score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df_2021</span><span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_2021</span><span class="p">[</span><span class="s1">&#39;Ladder score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Re-order column names with &#39;Country&#39;, &#39;Rank&#39;, &#39;Score&#39;, etc</span>
+<span class="n">df_2017</span> <span class="o">=</span> <span class="n">df_2017</span><span class="p">[[</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness.Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness.Score&#39;</span><span class="p">,</span> <span class="s1">&#39;Economy..GDP.per.Capita.&#39;</span><span class="p">,</span> <span class="s1">&#39;Family&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Health..Life.Expectancy.&#39;</span><span class="p">,</span> <span class="s1">&#39;Freedom&#39;</span><span class="p">,</span> <span class="s1">&#39;Trust..Government.Corruption.&#39;</span><span class="p">,</span> <span class="s1">&#39;Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+
+<span class="n">df_2018</span> <span class="o">=</span> <span class="n">df_2018</span><span class="p">[[</span><span class="s1">&#39;Country or region&#39;</span><span class="p">,</span> <span class="s1">&#39;Overall rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="s1">&#39;GDP per capita&#39;</span><span class="p">,</span> <span class="s1">&#39;Social support&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Healthy life expectancy&#39;</span><span class="p">,</span> <span class="s1">&#39;Freedom to make life choices&#39;</span><span class="p">,</span> <span class="s1">&#39;Perceptions of corruption&#39;</span><span class="p">,</span> <span class="s1">&#39;Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+                  
+<span class="n">df_2019</span> <span class="o">=</span> <span class="n">df_2019</span><span class="p">[[</span><span class="s1">&#39;Country or region&#39;</span><span class="p">,</span> <span class="s1">&#39;Overall rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="s1">&#39;GDP per capita&#39;</span><span class="p">,</span> <span class="s1">&#39;Social support&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Healthy life expectancy&#39;</span><span class="p">,</span> <span class="s1">&#39;Freedom to make life choices&#39;</span><span class="p">,</span> <span class="s1">&#39;Perceptions of corruption&#39;</span><span class="p">,</span> <span class="s1">&#39;Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+
+<span class="n">df_2020</span> <span class="o">=</span> <span class="n">df_2020</span><span class="p">[[</span><span class="s1">&#39;Country name&#39;</span><span class="p">,</span> <span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Ladder score&#39;</span><span class="p">,</span> <span class="s1">&#39;Logged GDP per capita&#39;</span><span class="p">,</span> <span class="s1">&#39;Social support&#39;</span><span class="p">,</span> <span class="s1">&#39;Healthy life expectancy&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Freedom to make life choices&#39;</span><span class="p">,</span> <span class="s1">&#39;Perceptions of corruption&#39;</span><span class="p">,</span> <span class="s1">&#39;Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+
+<span class="n">df_2021</span> <span class="o">=</span> <span class="n">df_2021</span><span class="p">[[</span><span class="s1">&#39;Country name&#39;</span><span class="p">,</span> <span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Ladder score&#39;</span><span class="p">,</span> <span class="s1">&#39;Logged GDP per capita&#39;</span><span class="p">,</span> <span class="s1">&#39;Social support&#39;</span><span class="p">,</span> <span class="s1">&#39;Healthy life expectancy&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Freedom to make life choices&#39;</span><span class="p">,</span> <span class="s1">&#39;Perceptions of corruption&#39;</span><span class="p">,</span> <span class="s1">&#39;Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+
+<span class="n">df_2022</span> <span class="o">=</span> <span class="n">df_2022</span><span class="p">[[</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;RANK&#39;</span><span class="p">,</span> <span class="s1">&#39;Happiness score&#39;</span><span class="p">,</span> <span class="s1">&#39;Explained by: GDP per capita&#39;</span><span class="p">,</span> <span class="s1">&#39;Explained by: Social support&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Explained by: Healthy life expectancy&#39;</span><span class="p">,</span> <span class="s1">&#39;Explained by: Freedom to make life choices&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Explained by: Perceptions of corruption&#39;</span><span class="p">,</span> <span class="s1">&#39;Explained by: Generosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of 2015 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2015</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2016 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2016</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2017 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2017</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2018 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2018</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2019 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2019</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2020 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2020</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2021 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2021</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2022 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2022</span><span class="p">)))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Columns of 2015 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;Economy (GDP per Capita)&#39;, &#39;Family&#39;, &#39;Health (Life Expectancy)&#39;, &#39;Freedom&#39;, &#39;Trust (Government Corruption)&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2016 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;Economy (GDP per Capita)&#39;, &#39;Family&#39;, &#39;Health (Life Expectancy)&#39;, &#39;Freedom&#39;, &#39;Trust (Government Corruption)&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2017 DataFrame:
+[&#39;Country&#39;, &#39;Happiness.Rank&#39;, &#39;Happiness.Score&#39;, &#39;Economy..GDP.per.Capita.&#39;, &#39;Family&#39;, &#39;Health..Life.Expectancy.&#39;, &#39;Freedom&#39;, &#39;Trust..Government.Corruption.&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2018 DataFrame:
+[&#39;Country or region&#39;, &#39;Overall rank&#39;, &#39;Score&#39;, &#39;GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2019 DataFrame:
+[&#39;Country or region&#39;, &#39;Overall rank&#39;, &#39;Score&#39;, &#39;GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2020 DataFrame:
+[&#39;Country name&#39;, &#39;Rank&#39;, &#39;Ladder score&#39;, &#39;Logged GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2021 DataFrame:
+[&#39;Country name&#39;, &#39;Rank&#39;, &#39;Ladder score&#39;, &#39;Logged GDP per capita&#39;, &#39;Social support&#39;, &#39;Healthy life expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2022 DataFrame:
+[&#39;Country&#39;, &#39;RANK&#39;, &#39;Happiness score&#39;, &#39;Explained by: GDP per capita&#39;, &#39;Explained by: Social support&#39;, &#39;Explained by: Healthy life expectancy&#39;, &#39;Explained by: Freedom to make life choices&#39;, &#39;Explained by: Perceptions of corruption&#39;, &#39;Explained by: Generosity&#39;, &#39;Year&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This looks a lot more uniform, but we have one final step of renaming the columns.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[73]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">updated_dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_2015</span><span class="p">,</span> <span class="n">df_2016</span><span class="p">,</span> <span class="n">df_2017</span><span class="p">,</span> <span class="n">df_2018</span><span class="p">,</span> <span class="n">df_2019</span><span class="p">,</span> <span class="n">df_2020</span><span class="p">,</span> <span class="n">df_2021</span><span class="p">,</span> <span class="n">df_2022</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">updated_dfs</span><span class="p">:</span>
+  <span class="n">i</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns of 2015 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2015</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2016 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2016</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2017 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2017</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2018 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2018</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2019 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2019</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2020 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2020</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2021 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2021</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns of 2022 DataFrame:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_2022</span><span class="p">)))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Columns of 2015 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2016 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2017 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2018 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2019 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2020 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2021 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+
+Columns of 2022 DataFrame:
+[&#39;Country&#39;, &#39;Happiness Rank&#39;, &#39;Happiness Score&#39;, &#39;GDP per Capita (Economy)&#39;, &#39;Social Support&#39;, &#39;Healthy Life Expectancy&#39;, &#39;Freedom to make life choices&#39;, &#39;Perceptions of Corruption&#39;, &#39;Generosity&#39;, &#39;Year&#39;]
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that the number of columns, types of data in each column, and their respective names are all matched, we can finally concatenate these DataFrames.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">happiness_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">updated_dfs</span><span class="p">)</span>
+<span class="n">happiness_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[74]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+
+  <div id="df-5d8a1d04-f456-4650-9b76-c0d9c0f953f8">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>Happiness Rank</th>
+      <th>Happiness Score</th>
+      <th>GDP per Capita (Economy)</th>
+      <th>Social Support</th>
+      <th>Healthy Life Expectancy</th>
+      <th>Freedom to make life choices</th>
+      <th>Perceptions of Corruption</th>
+      <th>Generosity</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Switzerland</td>
+      <td>1</td>
+      <td>7.587</td>
+      <td>1.39651</td>
+      <td>1.34951</td>
+      <td>0.94143</td>
+      <td>0.66557</td>
+      <td>0.41978</td>
+      <td>0.29678</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Iceland</td>
+      <td>2</td>
+      <td>7.561</td>
+      <td>1.30232</td>
+      <td>1.40223</td>
+      <td>0.94784</td>
+      <td>0.62877</td>
+      <td>0.14145</td>
+      <td>0.4363</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Denmark</td>
+      <td>3</td>
+      <td>7.527</td>
+      <td>1.32548</td>
+      <td>1.36058</td>
+      <td>0.87464</td>
+      <td>0.64938</td>
+      <td>0.48357</td>
+      <td>0.34139</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Norway</td>
+      <td>4</td>
+      <td>7.522</td>
+      <td>1.459</td>
+      <td>1.33095</td>
+      <td>0.88521</td>
+      <td>0.66973</td>
+      <td>0.36503</td>
+      <td>0.34699</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Canada</td>
+      <td>5</td>
+      <td>7.427</td>
+      <td>1.32629</td>
+      <td>1.32261</td>
+      <td>0.90563</td>
+      <td>0.63297</td>
+      <td>0.32957</td>
+      <td>0.45811</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Rwanda*</td>
+      <td>143</td>
+      <td>3,268</td>
+      <td>0,785</td>
+      <td>0,133</td>
+      <td>0,462</td>
+      <td>0,621</td>
+      <td>0,544</td>
+      <td>0,187</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>Zimbabwe</td>
+      <td>144</td>
+      <td>2,995</td>
+      <td>0,947</td>
+      <td>0,690</td>
+      <td>0,270</td>
+      <td>0,329</td>
+      <td>0,105</td>
+      <td>0,106</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>Lebanon</td>
+      <td>145</td>
+      <td>2,955</td>
+      <td>1,392</td>
+      <td>0,498</td>
+      <td>0,631</td>
+      <td>0,103</td>
+      <td>0,034</td>
+      <td>0,082</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>Afghanistan</td>
+      <td>146</td>
+      <td>2,404</td>
+      <td>0,758</td>
+      <td>0,000</td>
+      <td>0,289</td>
+      <td>0,000</td>
+      <td>0,005</td>
+      <td>0,089</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>xx</td>
+      <td>147</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2022</td>
+    </tr>
+  </tbody>
+</table>
+<p>1231 rows × 10 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-5d8a1d04-f456-4650-9b76-c0d9c0f953f8')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-5d8a1d04-f456-4650-9b76-c0d9c0f953f8 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-5d8a1d04-f456-4650-9b76-c0d9c0f953f8');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>There does seem to be some issues with the 2022 data, i.e. there are commas instead of decimal points and the last row of 2022 just read some junk in as input. If we are working with other pieces of data from 2022, this can very easily be modified later.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Religion-Data">Religion Data<a class="anchor-link" href="#Religion-Data">&#182;</a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, we will also look at data regarding religion from each country. 
+For more, this information can be downloaded from the following website: <a href="https://data.un.org/Data.aspx?d=POP&amp;f=tableCode%3A28">https://data.un.org/Data.aspx?d=POP&amp;f=tableCode%3A28</a></p>
+<p>This data is from the United Nations Statistic Division, and there's even a column named "Reliability" which indicates how reliable the figure is.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[76]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">rel_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;UNdata.csv&quot;</span><span class="p">)</span>
+<span class="n">rel_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[76]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+
+  <div id="df-59fa3285-250f-4864-b937-ac715281d15e">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country or Area</th>
+      <th>Year</th>
+      <th>Area</th>
+      <th>Sex</th>
+      <th>Religion</th>
+      <th>Record Type</th>
+      <th>Reliability</th>
+      <th>Source Year</th>
+      <th>Value</th>
+      <th>Value Footnotes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Total</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>2800138.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Atheist</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>69995.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Catholic</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>280921.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Evangelical</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>3797.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Muslim</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>1587608.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22179</th>
+      <td>85</td>
+      <td>Data of mini-census taken in 2017.</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22180</th>
+      <td>86</td>
+      <td>Data refer to resident population.</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22181</th>
+      <td>87</td>
+      <td>Excluding population enumerated in hotels.</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22182</th>
+      <td>88</td>
+      <td>Other includes Orthodox, Bahai, Other Christia...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22183</th>
+      <td>89</td>
+      <td>Excluding Channel Islands (Guernsey and Jersey...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>22184 rows × 10 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-59fa3285-250f-4864-b937-ac715281d15e')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-59fa3285-250f-4864-b937-ac715281d15e button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-59fa3285-250f-4864-b937-ac715281d15e');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The goal of this tutorial is not to examine census information or to pick and choose certain religions to analyze. Rather, I will make an attempt to generalize "religious" versus "non-religious", so the only metric being looked at it the proportion of "religious" individuals there are in a country, regardless of however many religions might be practiced in that country. Additionally, we must also make a note that, according to the website where this data was taken from, there is data on only 113 countries or areas, versus the 153 countries included in Kaggle dataset.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[82]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">rel_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">rel_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">rel_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rel_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[82]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+
+  <div id="df-47ba4d1b-9b6b-4d8c-a10b-06dec2efa969">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country or Area</th>
+      <th>Year</th>
+      <th>Area</th>
+      <th>Sex</th>
+      <th>Religion</th>
+      <th>Record Type</th>
+      <th>Reliability</th>
+      <th>Source Year</th>
+      <th>Value</th>
+      <th>Value Footnotes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Total</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>2800138.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Atheist</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>69995.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Catholic</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>280921.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Evangelical</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>3797.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>Both Sexes</td>
+      <td>Muslim</td>
+      <td>Census - de jure - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2013.0</td>
+      <td>1587608.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22089</th>
+      <td>Zambia</td>
+      <td>2010</td>
+      <td>Rural</td>
+      <td>Female</td>
+      <td>Hindu</td>
+      <td>Census - de facto - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2015.0</td>
+      <td>189.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22090</th>
+      <td>Zambia</td>
+      <td>2010</td>
+      <td>Rural</td>
+      <td>Female</td>
+      <td>Muslim</td>
+      <td>Census - de facto - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2015.0</td>
+      <td>12038.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22091</th>
+      <td>Zambia</td>
+      <td>2010</td>
+      <td>Rural</td>
+      <td>Female</td>
+      <td>Protestant</td>
+      <td>Census - de facto - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2015.0</td>
+      <td>2915043.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22092</th>
+      <td>Zambia</td>
+      <td>2010</td>
+      <td>Rural</td>
+      <td>Female</td>
+      <td>Other</td>
+      <td>Census - de facto - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2015.0</td>
+      <td>72222.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22093</th>
+      <td>Zambia</td>
+      <td>2010</td>
+      <td>Rural</td>
+      <td>Female</td>
+      <td>None</td>
+      <td>Census - de facto - complete tabulation</td>
+      <td>Final figure, complete</td>
+      <td>2015.0</td>
+      <td>62375.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>22094 rows × 10 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-47ba4d1b-9b6b-4d8c-a10b-06dec2efa969')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-47ba4d1b-9b6b-4d8c-a10b-06dec2efa969 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-47ba4d1b-9b6b-4d8c-a10b-06dec2efa969');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[122]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">rel_df</span><span class="p">[[</span><span class="s1">&#39;Country or Area&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Religion&#39;</span><span class="p">,</span> <span class="s1">&#39;Value&#39;</span><span class="p">]]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Religion</span><span class="o">.</span><span class="n">unique</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[122]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&lt;bound method Series.unique of 0              Total
+1            Atheist
+2           Catholic
+3        Evangelical
+4             Muslim
+            ...     
+22089          Hindu
+22090         Muslim
+22091     Protestant
+22092          Other
+22093           None
+Name: Religion, Length: 22094, dtype: object&gt;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>I chose not to display every single classification that people from across the world can identify with since there are quite a few. For the purposes of this tutorial, I will be looking at <strong>'Total'</strong>, which represents the total population of a country at that year, and the classifications that clearly tries to represent an individual who is not religious. For this, I will be only keeping classifications such as <strong>'Atheist', 'No Religion'</strong>, and <strong>'None'</strong>. There are more ambiguous classifications like <strong>'No Affiliation', 'Non-denominational',</strong> and <strong>'Not Specified'</strong>, which are not as clear as the former classifications.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[127]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country or Area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Country or Area&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+  <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Religion&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Atheist&#39;</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Religion&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;No Religion&#39;</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Religion&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[127]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+
+  <div id="df-eaa8783a-035a-4d84-95c5-804641a3b56c">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country or Area</th>
+      <th>Year</th>
+      <th>Religion</th>
+      <th>Value</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Albania</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>2800138.0</td>
+      <td>14.845179</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Anguilla</td>
+      <td>2001</td>
+      <td>Total</td>
+      <td>11430.0</td>
+      <td>9.343997</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>Antigua and Barbuda</td>
+      <td>2001</td>
+      <td>Total</td>
+      <td>76886.0</td>
+      <td>11.250079</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>Armenia</td>
+      <td>2011</td>
+      <td>Armenian Apostolic</td>
+      <td>2796519.0</td>
+      <td>14.843886</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>Aruba</td>
+      <td>2010</td>
+      <td>Total</td>
+      <td>101484.0</td>
+      <td>11.527656</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>21716</th>
+      <td>United Kingdom of Great Britain and Northern I...</td>
+      <td>2011</td>
+      <td>Total</td>
+      <td>63182178.0</td>
+      <td>17.961533</td>
+    </tr>
+    <tr>
+      <th>21806</th>
+      <td>United Kingdom of Great Britain and Northern I...</td>
+      <td>2001</td>
+      <td>Total</td>
+      <td>58789194.0</td>
+      <td>17.889469</td>
+    </tr>
+    <tr>
+      <th>21896</th>
+      <td>Vanuatu</td>
+      <td>2009</td>
+      <td>Total</td>
+      <td>234023.0</td>
+      <td>12.363175</td>
+    </tr>
+    <tr>
+      <th>21932</th>
+      <td>Viet Nam</td>
+      <td>1999</td>
+      <td>Total</td>
+      <td>76323173.0</td>
+      <td>18.150487</td>
+    </tr>
+    <tr>
+      <th>22013</th>
+      <td>Zambia</td>
+      <td>2010</td>
+      <td>Total</td>
+      <td>12526314.0</td>
+      <td>16.343342</td>
+    </tr>
+  </tbody>
+</table>
+<p>204 rows × 5 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-eaa8783a-035a-4d84-95c5-804641a3b56c')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-eaa8783a-035a-4d84-95c5-804641a3b56c button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-eaa8783a-035a-4d84-95c5-804641a3b56c');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="3.-Exploratory-Data-Analysis">3. Exploratory Data Analysis<a class="anchor-link" href="#3.-Exploratory-Data-Analysis">&#182;</a></h1>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We now want to do some analysis on this data. I was unable to get some features for calculating religion to work, so this was my alternative.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[131]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">],</span> <span class="n">happiness_df</span><span class="p">[</span><span class="s1">&#39;Happiness Score&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-131-934e05d06189&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">15</span><span class="ansi-blue-fg">,</span><span class="ansi-cyan-fg">10</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>scatter<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Total&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> happiness_df<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;Happiness Score&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> plt<span class="ansi-blue-fg">.</span>show<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">scatter</span><span class="ansi-blue-fg">(x, y, s, c, marker, cmap, norm, vmin, vmax, alpha, linewidths, verts, edgecolors, plotnonfinite, data, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2814</span>         verts<span class="ansi-blue-fg">=</span>verts<span class="ansi-blue-fg">,</span> edgecolors<span class="ansi-blue-fg">=</span>edgecolors<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2815</span>         plotnonfinite=plotnonfinite, **({&#34;data&#34;: data} if data is not
+<span class="ansi-green-fg">-&gt; 2816</span><span class="ansi-red-fg">         None else {}), **kwargs)
+</span><span class="ansi-green-intense-fg ansi-bold">   2817</span>     sci<span class="ansi-blue-fg">(</span>__ret<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2818</span>     <span class="ansi-green-fg">return</span> __ret
+
+<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1563</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1564</span>         <span class="ansi-green-fg">if</span> data <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1565</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>map<span class="ansi-blue-fg">(</span>sanitize_sequence<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1566</span> 
+<span class="ansi-green-intense-fg ansi-bold">   1567</span>         bound <span class="ansi-blue-fg">=</span> new_sig<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/cbook/deprecation.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    356</span>                 <span class="ansi-blue-fg">f&#34;%(removal)s.  If any parameter follows {name!r}, they &#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    357</span>                 f&#34;should be pass as keyword, not positionally.&#34;)
+<span class="ansi-green-fg">--&gt; 358</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    359</span> 
+<span class="ansi-green-intense-fg ansi-bold">    360</span>     <span class="ansi-green-fg">return</span> wrapper
+
+<span class="ansi-green-fg">/usr/local/lib/python3.7/dist-packages/matplotlib/axes/_axes.py</span> in <span class="ansi-cyan-fg">scatter</span><span class="ansi-blue-fg">(self, x, y, s, c, marker, cmap, norm, vmin, vmax, alpha, linewidths, verts, edgecolors, plotnonfinite, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   4389</span>         y <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>ma<span class="ansi-blue-fg">.</span>ravel<span class="ansi-blue-fg">(</span>y<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   4390</span>         <span class="ansi-green-fg">if</span> x<span class="ansi-blue-fg">.</span>size <span class="ansi-blue-fg">!=</span> y<span class="ansi-blue-fg">.</span>size<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 4391</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;x and y must be the same size&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   4392</span> 
+<span class="ansi-green-intense-fg ansi-bold">   4393</span>         <span class="ansi-green-fg">if</span> s <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">ValueError</span>: x and y must be the same size</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="4.-Hypothesis-Testing">4. Hypothesis Testing<a class="anchor-link" href="#4.-Hypothesis-Testing">&#182;</a></h1>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Null Hypothesis:
+Religion has no relationship with parameters such as GDP per capita, Healthy Life Expectancy, Social Support, Freedom to make life choices, Generosity, and Corruption Perception.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="5.-Insights-and-Conclusion">5. Insights and Conclusion<a class="anchor-link" href="#5.-Insights-and-Conclusion">&#182;</a></h1>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>From our exploratory data analysis, we could tell that there does seem to be <strong>some</strong> correlation between religion and <strong>_</strong>. This tutorial is by no means advocating religion to be mandated by the government or saying that one religion might be more impactful than another.</p>
+
 </div>
 </div>
 </body>
